@@ -145,10 +145,10 @@ npz.ModelFactory = class {
                     if (!entry.name.endsWith('.npy')) {
                         throw new npz.Error("Invalid file name '" + entry.name + "'.");
                     }
-                    const id = entry.name.replace(/\.npy$/, '');
-                    const parts = id.split('/');
+                    const name = entry.name.replace(/\.npy$/, '');
+                    const parts = name.split('/');
                     const parameterName = parts.pop();
-                    const moduleName = (parts.length >= 2) ? parts.join('/') : '';
+                    const moduleName = parts.join('/');
                     if (!modulesMap.has(moduleName)) {
                         const newModule = { name: moduleName, parameters: [] };
                         modules.push(newModule);
